@@ -10,3 +10,11 @@ WHERE e.hire_date IN (
     );
 
 # Find all the titles held by all employees with the first name Aamod.
+SELECT t.title, COUNT(t.title)
+FROM titles t
+JOIN employees e on t.emp_no = e.emp_no
+WHERE t.emp_no IN (
+    SELECT e.emp_no
+    WHERE e.first_name = 'Aamod'
+    )
+GROUP BY t.title;
