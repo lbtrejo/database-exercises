@@ -18,3 +18,12 @@ WHERE t.emp_no IN (
     WHERE e.first_name = 'Aamod'
     )
 GROUP BY t.title;
+
+# Find all the current department managers that are female.
+SELECT first_name, last_name
+FROM employees
+WHERE gender = 'F' AND emp_no IN (
+    SELECT emp_no
+    FROM dept_manager
+    WHERE to_date = '9999-01-01'
+);
